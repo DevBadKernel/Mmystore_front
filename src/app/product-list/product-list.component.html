@@ -16,8 +16,9 @@
             Price: {{product.price}}€
         </p>
     
-    <div class="delete-btn">
-        <button type="button" (click)="deleteProduct(i)">X</button>
+    <div class="product-container">
+        <button type="button" (click)="deleteProduct(i)">Delete</button>
+        <button type="button" (click)="deleteProduct(i)">Modify</button>
     </div>
     
 </div>
@@ -29,5 +30,6 @@
         <button class="add-btn" type="submit">
             Add
         </button>
+        
     </form>
 </div>
