@@ -1,10 +1,11 @@
 
-<h2>Products</h2>
-<h2 *ngIf="!products.length">Add products to show list</h2>
+<h2>PRODUCTOS</h2>
+<h2 *ngIf="!products.length">Añade productos para mostrarlos en la lista</h2>
 <div class="container-products" *ngFor="let product of products;let i = index">
     
     <h3>
-        <a [title]="product.name + ' details'">
+        <a [title]="product.name" (click)="editProduct(i)">
+            <!-- "click" activa la funciona editProduct y pondría en marcha "ngIf" -->
         {{product.name}}
         </a>
     </h3>
@@ -17,18 +18,34 @@
         </p>
     
     <div class="product-container">
-        <button type="button" (click)="deleteProduct(i)">Delete</button>
-        <button type="button" (click)="deleteProduct(i)">Modify</button>
+        <button type="button" (click)="deleteProduct(i)">Eliminar</button>
     </div>
     
 </div>
-<div class="add-container">
-    <form [formGroup]="productForm" (ngSubmit)="add();">
-        <input type="text" formControlName="name" placeholder="Introdueix un producte">
-        <input type="number" formControlName="price" placeholder="Introdueix un preu">
-        <input type="text" formControlName="description" placeholder="Introdueix una descripció">
+
+<div class="add-container" *ngIf="showEdit"> 
+    <!-- con "ngIf=showEdit" lo que hacemos es condicionar lo que se muestra en el <div>-->
+    <h2>Edita un producto</h2>
+    <form [formGroup]="productForm" (ngSubmit)="modify();">
+        <input type="text" formControlName="name" placeholder="edita el producto">
+        <input type="number" formControlName="price" placeholder="Edita el precio">
+        <input type="text" formControlName="description" placeholder="Edita la descripción">
         <button class="add-btn" type="submit">
-            Add
+            Editar
+        </button>
+        
+    </form>
+</div>
+
+<div class="add-container" *ngIf="showAdd">
+    <!-- con "ngIf=showAdd" lo que hacemos es condicionar lo que se muestra en el <div> -->
+    <h2>Añade un producto</h2>
+    <form [formGroup]="productForm" (ngSubmit)="add();">
+        <input type="text" formControlName="name" placeholder="Introduce un producto">
+        <input type="number" formControlName="price" placeholder="Introduce el precio">
+        <input type="text" formControlName="description" placeholder="Introduce una descripción">
+        <button class="add-btn" type="submit">
+            Añadir
         </button>
         
     </form>
