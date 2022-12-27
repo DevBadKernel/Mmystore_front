@@ -6,8 +6,18 @@
 
 .delete-btn{
     position: relative;
-   
 }
+
+.product-container{
+    // margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 10%;
+    // margin-left: 50px;
+    // margin-bottom: 20px;
+}
+
 .add-container{
     margin-top: 50px;
     display: flex;
@@ -28,5 +38,5 @@
     background-color: #1976d2;  
     color: white;  
     border: none;
-    width: 50px;
+    width: 80px;
 }

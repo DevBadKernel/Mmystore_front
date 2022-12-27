@@ -24,4 +24,5 @@ import { TopBarComponent } from './top-bar/top-bar.component';
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

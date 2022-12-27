@@ -11,6 +11,9 @@ export class ProductService {
   private url = 'http://localhost:3000/api/get_products';
   private urlpost = 'http://localhost:3000/api/add_product';
   private urldelete = 'http://localhost:3000/api/delete_product';
+  private urlput = 'http://localhost:3000/api/update_product';
+  //muy importante que las urls coicidan en front y back
+  
   constructor(private httpClient:HttpClient) { }
 
   getProducts():Observable<Product[]>{
@@ -21,9 +24,14 @@ export class ProductService {
 
     const data = {name:name,price:price,description:description};
 
+
     return this.httpClient.post(this.urlpost,{info:data},{observe:'body'}).pipe(catchError(this.handleError<any>('addNewProduct')));
   }
 
+  updateProduct(_id:string,name:string,description:string,price:number):Observable<object>{
+    return this.httpClient.put(this.urlput,{_id:_id,name:name,description:description,price:price},{observe:'response'}).pipe(catchError(this.handleError<any>('updateProduct')));
+  }
+  
   deleteProduct(id:string):Observable<object>{
 
     return this.httpClient.delete(this.urldelete+'/'+id,{observe:'body'}).pipe(catchError(this.handleError<any>('deleteProduct')))
