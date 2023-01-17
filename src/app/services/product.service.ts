@@ -12,7 +12,7 @@ export class ProductService {
   private urlpost = 'http://localhost:3000/api/add_product';
   private urldelete = 'http://localhost:3000/api/delete_product';
   private urlput = 'http://localhost:3000/api/update_product';
-  //muy importante que las urls coicidan en front y back
+  //muy importante que las urls coincidan en front y back
   
   constructor(private httpClient:HttpClient) { }
 

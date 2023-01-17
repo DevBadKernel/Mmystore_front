@@ -8,6 +8,7 @@ import { ProductService } from '../services/product.service';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss']
 })
+
 export class ProductListComponent {
 
   products:Product[]=[];
